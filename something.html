@@ -1,0 +1,68 @@
+<html>
+    <div id=tweets></div>
+    <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+    <script>
+        var config = {
+    apiKey: "AIzaSyAr-XPbua8Hp0YYAbum-2YndycCL8wCZqQ",
+    authDomain: "test-project-e1afd.firebaseapp.com",
+    databaseURL: "https://test-project-e1afd.firebaseio.com",
+    projectId: "test-project-e1afd",
+    storageBucket: "test-project-e1afd.appspot.com",
+    messagingSenderId: "490597910023"
+  };
+  firebase.initializeApp(config);
+        
+        mydiv = document.getElementById("tweets");
+        
+        data = {
+                "tweets" : {
+    "m1SZOkQ93xR8IoOcxtWnaF0nibq0" : {
+      "-LWY3zmdKbRcdefIm8_x" : {
+        "tweet" : "Hello ?"
+      }
+    },
+    "vUvDYGiZxcaweMf5qWeMTeAXfYl0" : {
+      "-LWS4PcSY-vBweXXrSXA" : {
+        "tweet" : "this is an example"
+      },
+      "-LWSC4Ckltenibn6jpZf" : {
+        "tweet" : "hi"
+      },
+      "-LWSCQZQ9fe-2VRFBCUE" : {
+        "tweet" : "swank\n"
+      },
+      "-LWY58OxulaANTFnzODh" : {
+        "tweet" : "Hi David"
+      }
+    }
+  },
+  "users" : {
+    "m1SZOkQ93xR8IoOcxtWnaF0nibq0" : {
+      "email" : "dcrawford@ucc.on.ca",
+      "profile_picture" : "https://lh3.googleusercontent.com/-rI-udG5swZA/AAAAAAAAAAI/AAAAAAAAI2w/V7AqUC9xr24/photo.jpg",
+      "username" : "David Crawford"
+    },
+    "vUvDYGiZxcaweMf5qWeMTeAXfYl0" : {
+      "email" : "mhoel@ucc.on.ca",
+      "profile_picture" : "https://lh6.googleusercontent.com/-l2NF69h4UG4/AAAAAAAAAAI/AAAAAAAACzw/V1pCOyunEko/photo.jpg",
+      "username" : "Mark Hoel"
+    }
+  }
+}
+        
+    myhtml = "<table>";
+    const keys = Object.keys(data.tweets);
+    for (const key of keys) {
+        console.log(data.tweets[key]);
+        const tweets = Object.keys(data.tweets[keys]);
+        for (const tweet of tweets) {
+            console.log(data.tweets[key][tweet].tweet);
+            myhtml = myhtml + "<tr><td><img src=" + data.users[key].profile_picture + " width='75' title=" + data.users[key].username + "</td></tr>;
+            console.log(data.users[key].username);
+            
+        myhtml = myhtml + "</table>"
+        mydiv.innerHTML = myhtml;
+        }
+    }
+    </script>
+</html>
